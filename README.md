@@ -2,11 +2,15 @@
 
 ## Workshop instructions
 
-1. This repository is a template. Use it when creating your own personal repository **within this organization, NOT under your personal profile**. You can just click on the "Use this template" green button to get started. 
+1. This repository is a template. Use it when creating your own personal repository **using this organization as the owner**, NOT under your personal profile. You can just click on the "Use this template" green button to get started. 
 1. Open this repository in a new Codespace and wait for the load to be fully executed. Wait for VSCode to open in your browser, you should then see in the terminal that NPM is being installed.
 1. Once NPM installation is completed, the terminal window should have only one tab and you can type `uname -a` and hit `enter`. You will see that this codespace runs on Linux on Azure. 
 1. Now let's run our application with `npm run dev` and hit `enter`. 
 1. After a little bit of processing, press the `cmd` or `ctrl` key and click on the `https://localhost:3000` link and see our demo application running. 
+1. Stop the app
+1. Use CMD+Shift+P to access the palette. type 'add devcontainer' and select 'NodeJS & MongoDB', and select the default version (`14-buster`). Do not add extra features. The codespaces files have been created in the `.devcontainer` folder. 
+1. Rebuild the container by clicking on `Rebuild now` 
+1. Modify the `devcontainer.json` file so that test data is loaded in the DB at build time. Replace the line starting with `// postCreateCommand` with `"postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/codespace_oddity/test/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",`
 
 ## Build Setup
 
