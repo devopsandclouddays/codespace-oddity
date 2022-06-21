@@ -1,5 +1,13 @@
 # codespace-oddity
 
+## Workshop instructions
+
+1. This repository is a template. Use it when creating your own personal repository **within this organization, NOT under your personal profile**. You can just click on the "Use this template" green button to get started. 
+1. Open this repository in a new Codespace and wait for the load to be fully executed. Wait for VSCode to open in your browser, you should then see in the terminal that NPM is being installed.
+1. Once NPM installation is completed, the terminal window should have only one tab and you can type `uname -a` and hit `enter`. You will see that this codespace runs on Linux on Azure. 
+1. Now let's run our application with `npm run dev` and hit `enter`. 
+1. After a little bit of processing, press the `cmd` or `ctrl` key and click on the `https://localhost:3000` link and see our demo application running. 
+
 ## Build Setup
 
 ```bash
