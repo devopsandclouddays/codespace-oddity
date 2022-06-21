@@ -106,6 +106,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
+        },
+        {
+          icon: 'mdi-music',
+          title: 'Songs',
+          to: '/song-list'
         }
       ],
       miniVariant: false,
