@@ -6,11 +6,22 @@
 1. Open this repository in a new Codespace and wait for the load to be fully executed. Wait for VSCode to open in your browser, you should then see in the terminal that NPM is being installed.
 1. Once NPM installation is completed, the terminal window should have only one tab and you can type `uname -a` and hit `enter`. You will see that this codespace runs on Linux on Azure. 
 1. Now let's run our application with `npm run dev` and hit `enter`. 
-1. After a little bit of processing, press the `cmd` or `ctrl` key and click on the `https://localhost:3000` link and see our demo application running. 
-1. Stop the app
-1. Use CMD+Shift+P to access the palette. type 'add devcontainer' and select 'NodeJS & MongoDB', and select the default version (`14-buster`). Do not add extra features. The codespaces files have been created in the `.devcontainer` folder. 
-1. Rebuild the container by clicking on `Rebuild now` 
-1. Modify the `devcontainer.json` file so that test data is loaded in the DB at build time. Replace the line starting with `// postCreateCommand` with `"postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/codespace_oddity/test/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",`
+1. After a little bit of processing, press the `cmd` or `ctrl` key and click on the `https://localhost:3000` link and see our demo application running. If you are using VSCode in the browser, you will notice that the browser URL is not actually localhost. If you are using you local VSCode, the browser will show localhost but this URL is proxified transparently to your codespace. 
+1. Open the left panel by clicking on the hamburger button (the three horizontal lines) and click through the icons. You will notice that one of them doesn't work. It relies on `pages\song-list.vue` which makes a REST call to the data service implemented by `api/db.js`. You will notice this service uses mongodb, which is not available. Let's add this. 
+1. Stop the app by hitting `ctrl+c` in the terminal window. 
+1. Use `F1` or `CMD+Shift+p` to access the palette. Start typing `Codespaces` and select 'Add Development Container Configuration Files...'. Then select 'NodeJS & MongoDB', and select the default version (`14-buster`). Do not add extra features, simply click `Ok`. The codespaces files have been created in the `.devcontainer` folder. 
+1. Rebuild the container by clicking on `Rebuild now` in the dialog, or click the `Codespaces` link on the lower left corner of the window, and then select `Rebuild Container` at the top.
+1. Once the Codespace has finished reloading, you should see that there is a new MongoDB extension in VSCode. You can use it to connect to the local DB by clicking on `Add Connection` and then use `mongodb://localhost` as the connection string. You will notice that the database is empty, so let's make sure it is populated with the content from `data\bowie.csv`.  
+1. Modify the `devcontainer.json` file so that test data is loaded in the DB at build time. Replace the line 
+```
+// "postCreateCommand": "yarn install",
+``` 
+with 
+```
+"postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/codespace_oddity/test/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",
+```
+1. Save the file and rebuild the Codespace. Once it is up again, you should be able to browse the data under the database `mydb` from the MongoDB extension. 
+1. Run the app by entering `npm run dev` in the terminal or clicking tha play button next to `dev` from the `NPM SCRIPTS` panel. Clicking on the `Songs` button in the app should now display the data :tada: 
 
 ## Build Setup
 
