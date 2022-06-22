@@ -6,12 +6,12 @@ app.all('/testDocument', (_, res) => {
   res.json({ data: doc })
 })
 
+// Get all songs
 app.all('/allSongs', async (_, res) => {
   const client = new MongoClient('mongodb://localhost')
   await client.connect()
 
   client.db('mydb').collection('songs').find().toArray().then((songs) => {
-    console.log(songs)
     res.json({ data: songs })
   })
 })

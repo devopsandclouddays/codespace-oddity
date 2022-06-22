@@ -18,12 +18,13 @@
 ```  
 with 
 ```
-"postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/codespace_oddity/test/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",
+"postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/<your repo name>/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",
 ```
 12. Save the file and rebuild the Codespace. Once it is up again, you should be able to browse the data under the database `mydb` from the MongoDB extension. 
 1. Run the app by entering `npm run dev` in the terminal or clicking tha play button next to `dev` from the `NPM SCRIPTS` panel. Clicking on the `Songs` button in the app should now display the data :tada: 
 1. If you look at the file `pages/song-list.vue` which is responsible for  rendeing the list of songs, you will see that there is no code highlighting, which is not great. Let's fix that by adding an extension to our codespace. Click on the Extensions button (the Tetris looking squares) on the left bar and search for `Vetur`. Many other VueJS extensions are available, feel free to use the one you like. Now we could click on install and enjoy it right away, but that would mean that a new codespace would not have it, and our colleague would need to do the same as well. So instead of installing it, let's right click on the `Vetur` item and select `Add to devcontainer.json`. Then commit/push this files and rebuild the codespace. Now have a look at the Vue file... :sparkles: 
-1. Now we want to add another tool in our codespace, but we actually want to add it to all our codepsaces, for this project but also others, future and past. It is then a personal preference that we need to store within our GitHub profile. Turn on `Settings Sync` using the cog wheel button on the lower part of the right pannel. Eventually merge the settings and then select `Extensions` from the same cog wheel button. Add `GitHub Copilot` to your favorite extensions. 
+1. Now we want to add another tool in our codespace, but we actually want to add it to all our codepsaces, for this project but also others, future and past. It is then a personal preference that we need to store within our GitHub profile. Turn on `Settings Sync` using the cog wheel button on the lower part of the right pannel. Eventually merge the settings and then select `Extensions` from the same cog wheel button. Add the `GitHub Actions` extension (the one from Christopher Schleiden) to your favorite extensions. You will be asked to login into GitHub. Go ahead and check out this extension. It will always be with you, in any Codespace or VSCode window where setting syncrhonization is enabled. 
+1. Add `GitHub Copilot` to your favorite extensions. If you don't have access to Copilot yet, you can activate [the free trial](https://github.com/features/copilot). 
 
 ## Build Setup
 

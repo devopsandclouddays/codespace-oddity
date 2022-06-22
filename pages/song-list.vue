@@ -5,7 +5,13 @@
         :headers="headers"
         :items="songs"
         class="elevation-1"
-      />
+      >
+        <template v-slot:item.song="{ item }">
+          <v-link :to="{ name: 'song', params: { id: item.id } }">
+            {{ item.song }}
+          </v-link>
+        </template>
+      </v-data-table>
     </v-col>
   </v-row>
 </template>
