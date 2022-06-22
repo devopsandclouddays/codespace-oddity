@@ -11,17 +11,18 @@
 1. Stop the app by hitting `ctrl+c` in the terminal window. 
 1. Use `F1` or `CMD+Shift+p` to access the palette. Start typing `Codespaces` and select 'Add Development Container Configuration Files...'. Then select 'NodeJS & MongoDB', and select the default version (`14-buster`). Do not add extra features, simply click `Ok`. The codespaces files have been created in the `.devcontainer` folder. 
 1. Rebuild the container by clicking on `Rebuild now` in the dialog, or click the `Codespaces` link on the lower left corner of the window, and then select `Rebuild Container` at the top.
-1. Once the Codespace has finished reloading, you should see that there is a new MongoDB extension in VSCode. You can use it to connect to the local DB by clicking on `Add Connection` and then use `mongodb://localhost` as the connection string. You will notice that the database is empty, so let's make sure it is populated with the content from `data\bowie.csv`.  
+1. Once the Codespace has finished reloading, you should see that there is a new MongoDB extension in VSCode. You can use it to connect to the local DB by clicking on `Add Connection` and then use `mongodb://localhost` as the connection string. You will notice that the database is empty, so let's make sure it is populated with the content from `data/bowie.csv`.  
 1. Modify the `devcontainer.json` file so that test data is loaded in the DB at build time. Replace the line 
 ```
 // "postCreateCommand": "yarn install",
-``` 
+```  
 with 
 ```
 "postCreateCommand": "npm install && mongoimport --db mydb --collection songs --type=csv --file /workspaces/codespace_oddity/test/data/bowie.csv --headerline && cat .devcontainer/welcome-message.txt",
 ```
-1. Save the file and rebuild the Codespace. Once it is up again, you should be able to browse the data under the database `mydb` from the MongoDB extension. 
+12. Save the file and rebuild the Codespace. Once it is up again, you should be able to browse the data under the database `mydb` from the MongoDB extension. 
 1. Run the app by entering `npm run dev` in the terminal or clicking tha play button next to `dev` from the `NPM SCRIPTS` panel. Clicking on the `Songs` button in the app should now display the data :tada: 
+1. Now if you look at the file `pages/song-list.vue` which is responsible for  rendeing the list of songs, you will see that there is no code highlighting, which is not great. Let's fix that by adding an extension to our codespace. Click on the Extensions button (the Tetris looking squares) on the left bar and search for `Vetur`. Many other VueJS extensions are available, feel free to use the one you like. Now we could click on install and enjoy it right away, but that would mean that a new codespace would not have it, and our colleague would need to do the same as well. So instead of installing it, let's right click on the `Vetur` item and select `Add to devcontainer.json`. Then commit/push this files and rebuild the codespace. 
 
 ## Build Setup
 
