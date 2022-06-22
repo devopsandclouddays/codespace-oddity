@@ -6,10 +6,10 @@
         :items="songs"
         class="elevation-1"
       >
-        <template v-slot:item.song="{ item }">
-          <v-link :to="{ name: 'song', params: { id: item.id } }">
+        <template #[`item.song`]="{ item }">
+          <nuxt-link :to="{ name: 'song-id', params: { id: item._id } }">
             {{ item.song }}
-          </v-link>
+          </nuxt-link>
         </template>
       </v-data-table>
     </v-col>
@@ -19,7 +19,7 @@
 <script>
 export default {
   async asyncData ({ params, $axios }) {
-    const resp = await $axios.$get('/db-api/allSongs')
+    const resp = await $axios.$get('/db-api/songs')
     const songs = resp.data
     return { songs }
   },
