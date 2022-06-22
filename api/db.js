@@ -22,7 +22,6 @@ app.all('/song/:id', async (req, res) => {
   await client.connect()
 
   client.db('mydb').collection('songs').findOne({ _id: ObjectId(req.params.id) }).then((song) => {
-    console.log(song)
     res.json({ data: song })
   })
 })
